@@ -9,6 +9,10 @@ export function Header() {
               src="/img/logos/kasparex.png"
               alt="Kasparex Logo"
               className="h-8 w-8 object-contain"
+              onError={(e) => {
+                // Fallback if image fails to load
+                e.currentTarget.style.display = 'none';
+              }}
             />
             <h1 className="text-xl font-bold text-gray-900">Kasparex Hub</h1>
           </div>
