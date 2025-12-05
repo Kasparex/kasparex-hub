@@ -28,8 +28,9 @@
    - **Production branch**: `main`
    - **Framework preset**: `Remix` (Cloudflare will auto-detect)
    - **Build command**: `npm run build`
-   - **Build output directory**: Leave empty (Cloudflare auto-detects for Remix)
+   - **Build output directory**: `public` (contains static assets and client build)
    - **Root directory**: `/` (leave as default)
+   - **Note**: The `functions` directory at the root will be automatically detected for server-side rendering
 
 5. **Environment Variables** (if needed)
    - Add any required environment variables in the **Environment variables** section
