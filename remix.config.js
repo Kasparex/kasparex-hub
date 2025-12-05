@@ -2,6 +2,7 @@
 export default {
   ignoredRouteFiles: ["**/.*"],
   serverModuleFormat: "esm",
+  serverBuildPath: "build/index.js",
   future: {
     v3_fetcherPersist: true,
     v3_relativeSplatPath: true,
