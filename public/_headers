@@ -1,0 +1,18 @@
+# Cache control headers for Cloudflare Pages
+# CSS files should be cached but with versioning
+/build/_assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML files should not be cached aggressively
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# JavaScript files can be cached
+/build/**/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images can be cached
+/img/**
+  Cache-Control: public, max-age=31536000, immutable
+
+
