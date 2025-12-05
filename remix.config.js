@@ -3,6 +3,7 @@ export default {
   ignoredRouteFiles: ["**/.*"],
   serverModuleFormat: "esm",
   serverBuildPath: "build/index.js",
+  serverBuildTarget: "cloudflare-pages",
   future: {
     v3_fetcherPersist: true,
     v3_relativeSplatPath: true,
