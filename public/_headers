@@ -1,15 +1,22 @@
+# Security headers for all responses
+/*
+  X-Content-Type-Options: nosniff
+
 # Cache control headers for Cloudflare Pages
 # CSS files should be cached but with versioning
 /build/_assets/*.css
   Cache-Control: public, max-age=31536000, immutable
+  Content-Type: text/css; charset=UTF-8
 
 # HTML files should not be cached aggressively
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: text/html; charset=UTF-8
 
 # JavaScript files can be cached
 /build/**/*.js
   Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/javascript; charset=UTF-8
 
 # Images can be cached
 /img/**
