@@ -7,21 +7,25 @@ const requestHandler = createRequestHandler({
 });
 
 export const onRequest: PagesFunction = async (context) => {
+  // Handle Remix routes - Remix will handle routing and static assets correctly
   const response = await requestHandler(context);
   
   // Ensure Content-Type header is set correctly for HTML responses
-  // Only modify if it's not a static asset
-  const url = new URL(context.request.url);
-  const isStaticAsset = url.pathname.match(/\.(js|css|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|avif)$/i);
-  
-  if (!isStaticAsset) {
-    const contentType = response.headers.get("Content-Type");
-    if (!contentType || contentType.includes("text/html")) {
-      response.headers.set("Content-Type", "text/html; charset=UTF-8");
-    }
-    response.headers.set("X-Content-Type-Options", "nosniff");
+  const contentType = response.headers.get("Content-Type");
+  if (contentType && contentType.includes("text/html")) {
+    // Clone response to modify headers
+    const newHeaders = new Headers(response.headers);
+    newHeaders.set("Content-Type", "text/html; charset=UTF-8");
+    newHeaders.set("X-Content-Type-Options", "nosniff");
+    
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: newHeaders,
+    });
   }
   
+  // For non-HTML responses (like CSS, JS, images), return as-is
   return response;
 };
 
